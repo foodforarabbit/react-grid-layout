@@ -289,7 +289,8 @@ export default class ReactGridLayout extends React.Component<Props, State> {
         }
       },
 
-      dragOut: ({ event }) => {
+      // { event }
+      dragOut: () => {
         if (dragInfo) {
           const { i } = dragInfo;
           this.setState((state, props) => ({
@@ -502,7 +503,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
   onResizeStart(i: string, w: number, h: number, { e, node }: GridResizeEvent) {
     const { layout } = this.state;
     var l = getLayoutItem(layout, i);
-    const placeholder = this.state.activeDrag;
+    // const placeholder = this.state.activeDrag;
     if (!l) return;
 
     this.setState({
