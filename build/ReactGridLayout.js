@@ -42,6 +42,16 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
 
+function _objectWithoutProperties(obj, keys) {
+  var target = {};
+  for (var i in obj) {
+    if (keys.indexOf(i) >= 0) continue;
+    if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
+    target[i] = obj[i];
+  }
+  return target;
+}
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -124,7 +134,15 @@ var ReactGridLayout = (function(_React$Component) {
           h = _ref.h,
           node = _ref.node,
           event = _ref.event,
-          position = _ref.position;
+          position = _ref.position,
+          data = _objectWithoutProperties(_ref, [
+            "i",
+            "w",
+            "h",
+            "node",
+            "event",
+            "position"
+          ]);
 
         dragInfo = { i: i, w: w, h: h, node: node };
         var layout = _this2.state.layout;
@@ -146,7 +164,7 @@ var ReactGridLayout = (function(_React$Component) {
           y = _calcXY.y;
 
         if (!_this2.state.activeDrag) {
-          var l = { i: i, w: w, h: h, x: x, y: y };
+          var l = _extends({ i: i, w: w, h: h, x: x, y: y }, data);
           _this2.setState({
             oldDragItem: l,
             oldLayout: layout,

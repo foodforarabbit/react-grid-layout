@@ -261,7 +261,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
     let dragInfo = null;
 
     this.props.dragApiRef.value = {
-      dragIn: ({ i, w, h, node, event, position }) => {
+      dragIn: ({ i, w, h, node, event, position, ...data }) => {
         dragInfo = { i, w, h, node };
         const { layout } = this.state;
         const { margin, containerPadding } = this.props;
@@ -276,7 +276,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
           h
         });
         if (!this.state.activeDrag) {
-          const l = { i, w, h, x, y };
+          const l = { i, w, h, x, y, ...data };
           this.setState({
             oldDragItem: l,
             oldLayout: layout,
