@@ -83,7 +83,7 @@ function cloneLayout(layout) {
 
 // Fast path to cloning, since this is monomorphic
 function cloneLayoutItem(layoutItem) {
-  return {
+  return _extends({}, layoutItem, {
     w: layoutItem.w,
     h: layoutItem.h,
     x: layoutItem.x,
@@ -98,7 +98,7 @@ function cloneLayoutItem(layoutItem) {
     // These can be null
     isDraggable: layoutItem.isDraggable,
     isResizable: layoutItem.isResizable
-  };
+  });
 }
 
 /**
